@@ -1,0 +1,123 @@
+To check existing database:
+    show databases
+
+To check the list of tables from the current database:
+    show tables
+
+For creating the new database, we use this:
+Syntax:
+    create database database_name;
+
+Example:
+    create database college;
+
+To Select the database:
+Syntax:
+    use database_name;
+Ex:
+    use college;
+
+To create a new table:
+Syntax:
+    create table table_name (
+        column datatype,
+        column datatype,
+        column datatype,
+        ..............
+    );
+Ex:
+    create table students(
+        id int not null auto_increment Primary Key,
+        name varchar(50),
+        age int,
+        branch enum("CSE", "AIML", "IoT", "ISE"),
+        sem int,
+        section char(1),
+        address text
+    );
+
+To check the current data of the table:
+Syntax:
+    select * from table_name;
+Ex:
+    select * from students;
+
+Adding new columns to the existing table (ALTER):
+Syntax:
+    alter table table_name
+    add column_name datatype;
+Ex: 
+    alter table students
+    add gender enum("Male", "Female", "Others"),
+    add dob date;
+
+To make new insertion:
+Syntax:
+    insert into table_name 
+    (column1, column2) values 
+    (value1, value2);
+Ex:
+    insert into students 
+    (name, age, branch, sem, section, address, gender, dob) values 
+    ("Pavan", 25, "ISE", 5, "A", "Bengaluru", "Male", "2000-09-29");
+
+    insert into students 
+    (name, age, branch, sem, section, address, gender, dob) values 
+    ("Ajay", 23, "CSE", 3, "A", "Mysuru", "Male", "2002-09-29");
+
+To make bulk insertion:
+    insert into students 
+    (name, age, branch, sem, section, address, gender, dob) values 
+    ("Vijay", 24, "IoT", 3, "A", "Tumakuru", "Male", "2003-09-29"),
+    ("Vikas", 25, "ISE", 7, "A", "Bengaluru", "Male", "2000-03-25"),
+    ("Akshatha", 22, "CSE", 3, "A", "Mysuru", "Female", "1999-06-21");
+
+    insert into college
+    (name, cet_code, type, address) values
+    ("City Engineering College", "CEC123", "VTU", "Doddakallasandra"),
+    ("Seshadripuram College", "SES123", "VTU", "Seshadripuram");
+
+To add new column to track the time of creation and updation:
+    alter table students
+    add created_at timestamp default current_timestamp,
+    add updated_at timestamp default current_timestamp on update current_timestamp;
+
+For date: ("yyyy-mm-dd") Ex: ("2000-01-01")
+
+Alter table students
+add skills Set('Java', 'Python', 'HTML', 'CSS', 'JS', 'MySQL');
+
+UPDATE students SET skills = 'JS,MySQL' WHERE (id = '3');
+UPDATE students SET skills = 'HTML,CSS' WHERE (id = '2');
+
+Linking the College to the Students:
+    Alter table students
+    add college_id int,
+    add foreign key(college_id) references college(id);
+
+To remove the existing column from the table:
+    Alter table students
+    drop column branch;
+
+Creating the Branch Master Table:
+    create table branch(
+    id int not null auto_increment primary key,
+    name varchar(20),
+    short_name varchar(4));
+
+Updating the size of the name column in branch table:
+    alter table branch
+    modify name varchar(50);
+
+Inserting the data into branch table:
+    insert into branch (name, short_name) values
+    ("Computer Science", "CSE"),
+    ("Information Science", "ISE"),
+    ("Artificial Intelligence & Machine Learning", "AIML"),
+    ("Electronics Communication", "ECE"),
+    ("Civil", "CIV"),
+    ("Mechanical", "MECH");
+
+To remove all the existing data from the table:
+Syntax:
+    truncate table table_name
