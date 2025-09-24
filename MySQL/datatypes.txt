@@ -1,0 +1,230 @@
+Numeric Data Types
+
+1. INT, SMALLINT, BIGINT
+
+Used for integers (whole numbers). Range differs.
+
+* `INT` → common integer (-2,147,483,648 to 2,147,483,647)
+* `SMALLINT` → smaller range (-32,768 to 32,767)
+* `BIGINT` → larger range (for big values like population, bank balance).
+
+Example:
+
+CREATE TABLE NumbersDemo (
+  small_num SMALLINT,
+  normal_num INT,
+  big_num BIGINT
+);
+
+INSERT INTO NumbersDemo VALUES (200, 200000, 9000000000);
+SELECT * FROM NumbersDemo;
+
+Stores integer values of different ranges.
+
+2. DECIMAL(p,s), NUMERIC
+
+Used for exact precision → financial applications.
+
+* `p = total digits`, `s = digits after decimal`.
+
+Example:
+
+CREATE TABLE PriceDemo (
+  item VARCHAR(20),
+  price DECIMAL(8,2)  -- up to 999,999.99
+);
+
+INSERT INTO PriceDemo VALUES ('Laptop', 45999.50), ('Mouse', 499.90);
+SELECT * FROM PriceDemo;
+
+`DECIMAL(8,2)` ensures fixed 2 digits after decimal.
+
+3. FLOAT, DOUBLE
+
+Used for approximate decimal values (scientific calculations).
+
+* Less precise than `DECIMAL`.
+
+Example:
+
+CREATE TABLE MarksDemo (
+  student VARCHAR(20),
+  percentage FLOAT,
+  gpa DOUBLE
+);
+
+INSERT INTO MarksDemo VALUES ('Akshay', 85.75, 8.9999);
+SELECT * FROM MarksDemo;
+
+`FLOAT` stores 4–7 digits precision, `DOUBLE` stores 15–16 digits.
+
+String Data Types
+
+4. CHAR(n)
+
+Fixed-length string. Pads with spaces if shorter.
+
+Example:
+
+CREATE TABLE CodeDemo (
+  code CHAR(5)
+);
+
+INSERT INTO CodeDemo VALUES ('AB'), ('HELLO');
+SELECT code, LENGTH(code) FROM CodeDemo;
+
+`'AB'` is stored as `'AB   '` (padded to 5).
+
+5. VARCHAR(n)
+
+Variable-length string (saves storage).
+
+Example:
+
+CREATE TABLE NamesDemo (
+  name VARCHAR(20)
+);
+
+INSERT INTO NamesDemo VALUES ('Rao'), ('Akshay Rao');
+SELECT name, LENGTH(name) FROM NamesDemo;
+
+`'Rao'` uses only 3 bytes, `'Akshay Rao'` uses 10 bytes.
+
+6. TEXT
+
+Large text storage.
+
+* `TINYTEXT`, `TEXT`, `MEDIUMTEXT`, `LONGTEXT`.
+
+Example:
+
+CREATE TABLE ArticlesDemo (
+  article_id INT,
+  content TEXT
+);
+
+INSERT INTO ArticlesDemo VALUES (1, 'This is a long article stored in TEXT column.');
+SELECT * FROM ArticlesDemo;
+
+Used for blogs, comments, descriptions.
+
+7. ENUM
+
+Restricts values to a predefined list.
+
+Example:
+
+CREATE TABLE GenderDemo (
+  id INT,
+  gender ENUM('Male','Female','Other')
+);
+
+INSERT INTO GenderDemo VALUES (1, 'Male'), (2, 'Female');
+-- This will FAIL:
+-- INSERT INTO GenderDemo VALUES (3, 'Unknown');
+
+Only specified values are allowed.
+
+8. SET
+
+Stores multiple values from a predefined list.
+
+Example:
+
+CREATE TABLE SkillsDemo (
+  id INT,
+  skills SET('Java','Python','SQL','C++')
+);
+
+INSERT INTO SkillsDemo VALUES (1, 'Java,SQL'), (2, 'Python,C++');
+SELECT * FROM SkillsDemo;
+
+Each row can have one or more skills.
+
+9. BLOB (Binary Large Object)
+
+Stores binary data (images, files).
+
+Example:
+
+CREATE TABLE FilesDemo (
+  id INT,
+  file_data BLOB
+);
+
+Used to store image/pdf content. (Usually handled with file upload in apps).
+
+Date & Time Data Types
+
+10. DATE
+
+Stores only date (`YYYY-MM-DD`).
+
+Example:
+
+CREATE TABLE BirthDemo (
+  name VARCHAR(20),
+  dob DATE
+);
+
+INSERT INTO BirthDemo VALUES ('Akshay','1999-05-10');
+SELECT * FROM BirthDemo;
+
+11. DATETIME
+
+Stores date & time (`YYYY-MM-DD HH:MM:SS`).
+
+Example:
+
+CREATE TABLE EventDemo (
+  event_name VARCHAR(50),
+  event_time DATETIME
+);
+
+INSERT INTO EventDemo VALUES ('Conference','2025-09-22 10:30:00');
+SELECT * FROM EventDemo;
+
+12. TIMESTAMP
+
+Stores date & time with automatic updates + time zone.
+
+Example:
+
+CREATE TABLE LogDemo (
+  id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO LogDemo (id) VALUES (1);
+SELECT * FROM LogDemo;
+
+Auto-stores when row was created/modified.
+
+13. TIME
+
+Stores time (`HH:MM:SS`).
+
+Example:
+
+CREATE TABLE ScheduleDemo (
+  task VARCHAR(20),
+  start_time TIME
+);
+
+INSERT INTO ScheduleDemo VALUES ('Meeting','14:30:00');
+SELECT * FROM ScheduleDemo;
+
+14. YEAR
+
+Stores year (4-digit).
+
+Example:
+
+CREATE TABLE CarDemo (
+  car_name VARCHAR(20),
+  manufacture_year YEAR
+);
+
+INSERT INTO CarDemo VALUES ('Honda','2022');
+SELECT * FROM CarDemo;

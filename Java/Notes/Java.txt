@@ -1,0 +1,282 @@
+1) History & Features
+
+History: Java was created by Sun Microsystems (led by James Gosling) to provide a platform-independent language for consumer devices and later became dominant for server, desktop, and Android development.
+
+Key features (why Java matters):
+    * Platform independent — “Write once, run anywhere” (WORA) (JVM).
+    * Object-Oriented — encourages modular design.
+    * Strongly typed — compile-time checking.
+    * Automatic memory management — garbage collection.
+    * Rich standard library — `java.*` packages for common tasks.
+    * Robust & secure — checked exceptions, sandboxing (historically).
+------------------------------------------------------------------------------------------------------------------
+2) JVM, JDK, JRE
+
+JVM (Java Virtual Machine): runtime that executes bytecode (`.class`) on the target platform.
+JDK (Java Development Kit): contains `javac`, `java`, libraries — everything a developer needs to write & compile Java.
+JRE (Java Runtime Environment): contains the JVM + runtime libraries — what you need to run compiled Java programs (but not compile them).
+
+Real-time Example:
+    * JDK = full kitchen (you can cook)
+    * JRE = kitchen with stove only (you can cook prepared stuff)
+    * JVM = the stove that actually cooks across countries
+------------------------------------------------------------------------------------------------------------------
+3) Writing & running a Java program — Hello World
+
+Explanation: Java code is saved in a `.java` file containing a class with a `main` method. Compile `.java` → `.class` (bytecode). Run bytecode on JVM.
+
+Program: `HelloWorld.java`
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+
+Compile & run:
+        javac HelloWorld.java
+        java HelloWorld
+
+Output:
+    Hello, World!
+
+> Note: file name must match the `public class` name (`HelloWorld.java`).
+------------------------------------------------------------------------------------------------------------------
+4) Data types & variables
+
+Explanation:
+    * Primitive types: `byte`, `short`, `int`, `long` (integers); `float`, `double` (floating point); `char` (single character); `boolean` (true/false).
+    * Reference types: objects, e.g., `String`, arrays, custom classes.
+    * Variables hold values and must have a type.
+
+Program: `DataTypesDemo.java`
+
+public class DataTypesDemo {
+    public static void main(String[] args) {
+        // Integer types
+        byte b = 10;
+        short s = 1000;
+        int i = 123456;
+        long l = 123456789L;
+
+        // Floating point
+        float f = 3.14f;
+        double d = 2.718281828;
+
+        // Character and boolean
+        char c = 'A';
+        boolean flag = true;
+
+        // Reference type
+        String name = "Akshay";
+
+        System.out.println("byte: " + b);
+        System.out.println("short: " + s);
+        System.out.println("int: " + i);
+        System.out.println("long: " + l);
+        System.out.println("float: " + f);
+        System.out.println("double: " + d);
+        System.out.println("char: " + c);
+        System.out.println("boolean: " + flag);
+        System.out.println("String: " + name);
+    }
+}
+
+Compile & run:
+    javac DataTypesDemo.java
+    java DataTypesDemo
+
+Output:
+    byte: 10
+    short: 1000
+    int: 123456
+    long: 123456789
+    float: 3.14
+    double: 2.718281828
+    char: A
+    boolean: true
+    String: Akshay
+------------------------------------------------------------------------------------------------------------------
+5) Operators
+
+Explanation:
+    * Arithmetic: `+ - * / %`
+    * Relational: `== != > < >= <=`
+    * Logical: `&& || !`
+    * Assignment: `=, +=, -=, *=, /=`
+    * Unary: `++`, `--`, `-` (negation)
+    * Ternary: `condition ? expr1 : expr2`
+    * Bitwise: `& | ^ ~ << >>` (integer-level ops)
+
+Program: `OperatorsDemo.java`
+
+public class OperatorsDemo {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 2;
+
+        // Arithmetic
+        System.out.println("a + b = " + (a + b)); // 7
+        System.out.println("a - b = " + (a - b)); // 3
+        System.out.println("a * b = " + (a * b)); // 10
+        System.out.println("a / b = " + (a / b)); // 2 (integer division)
+        System.out.println("a / (double)b = " + (a / (double)b)); // 2.5
+        System.out.println("a % b = " + (a % b)); // 1
+
+        // Relational
+        System.out.println("a > b: " + (a > b)); // true
+        System.out.println("a == b: " + (a == b)); // false
+
+        // Logical
+        boolean cond = (a > 0) && (b > 0);
+        System.out.println("logical AND: " + cond);
+
+        // Ternary
+        int max = (a > b) ? a : b;
+        System.out.println("max: " + max);
+
+        // Bitwise
+        System.out.println("a & b = " + (a & b)); // 1
+        System.out.println("a | b = " + (a | b)); // 7
+        System.out.println("a ^ b = " + (a ^ b)); // 6
+    }
+}
+
+Compile & run:
+    javac OperatorsDemo.java
+    java OperatorsDemo
+
+Output:
+    a + b = 7
+    a - b = 3
+    a * b = 10
+    a / b = 2
+    a / (double)b = 2.5
+    a % b = 1
+    a > b: true
+    a == b: false
+    logical AND: true
+    max: 5
+    a & b = 1
+    a | b = 7
+    a ^ b = 6
+------------------------------------------------------------------------------------------------------------------
+6) Control structures — `if`, `switch`, loops
+a) `if`, `if-else`, nested `if`
+
+Explanation: branching based on boolean expressions.
+
+Program: `IfDemo.java`
+
+public class IfDemo {
+    public static void main(String[] args) {
+        int n = 15;
+
+        if (n % 3 == 0) {
+            System.out.println("Divisible by 3");
+        } else if (n % 5 == 0) {
+            System.out.println("Divisible by 5");
+        } else {
+            System.out.println("Not divisible by 3 or 5");
+        }
+
+        // nested
+        if (n > 0) {
+            if (n % 2 == 0) {
+                System.out.println("Positive even number");
+            } else {
+                System.out.println("Positive odd number");
+            }
+        }
+    }
+}
+
+Output:
+    Divisible by 3
+    Positive odd number
+------------------------------------------------------------------------------------------------------------------
+b) `switch`
+
+Explanation: multiple-branch selection based on a single value (int, enum, String allowed).
+
+Program: `SwitchDemo.java`
+
+public class SwitchDemo {
+    public static void main(String[] args) {
+        String grade = "B";
+
+        switch (grade) {
+            case "A":
+                System.out.println("Excellent");
+                break;
+            case "B":
+                System.out.println("Good");
+                break;
+            case "C":
+                System.out.println("Average");
+                break;
+            default:
+                System.out.println("Unknown grade");
+        }
+    }
+}
+
+Output:
+    Good
+------------------------------------------------------------------------------------------------------------------
+c) `for`, enhanced for (for-each), `while`, `do-while`
+
+Explanation: repeat execution — use `for` for counted loops, `while`/`do-while` for condition-based loops, enhanced for for arrays/collections.
+
+Program: `LoopsDemo.java`
+
+import java.util.ArrayList;
+
+public class LoopsDemo {
+    public static void main(String[] args) {
+        // for loop
+        for (int i = 1; i <= 5; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        // enhanced for (array)
+        int[] arr = {10, 20, 30};
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+        System.out.println();
+
+        // while loop
+        int w = 3;
+        while (w > 0) {
+            System.out.println("while: " + w);
+            w--;
+        }
+
+        // do-while loop
+        int dw = 0;
+        do {
+            System.out.println("do-while runs at least once");
+            dw++;
+        } while (dw < 1);
+
+        // enhanced for with collection
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Akshay");
+        names.add("Priya");
+        for (String name : names) {
+            System.out.println("Name: " + name);
+        }
+    }
+}
+
+Output:
+    1 2 3 4 5 
+    10 20 30 
+    while: 3
+    while: 2
+    while: 1
+    do-while runs at least once
+    Name: Akshay
+    Name: Priya

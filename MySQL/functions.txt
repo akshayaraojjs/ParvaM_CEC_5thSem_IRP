@@ -1,0 +1,123 @@
+MySQL Functions – String Functions
+
+1. CONCAT() – joins strings together
+
+SELECT CONCAT('Hello', ' ', 'World') AS result;
+
+Output → `Hello World`
+
+Use case: Combine first and last names in one column.
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM employees;
+
+2. LENGTH() – returns length of a string (in bytes)
+
+SELECT LENGTH('MySQL') AS length;
+
+Output → `5`
+
+3. TRIM() – removes spaces (or chosen characters)
+
+SELECT TRIM('   SQL   ') AS trimmed;
+
+Output → `SQL`
+
+4. UPPER() / LOWER() – convert case
+
+SELECT UPPER('mysql') AS upper_text, LOWER('MYSQL') AS lower_text;
+
+Output → `MYSQL | mysql`
+
+5. SUBSTRING() – extract part of string
+
+SELECT SUBSTRING('Database', 2, 4) AS sub_str;
+
+Output → `atab` (from position 2, length 4)
+
+6. INSTR() – find position of substring
+
+SELECT INSTR('Database', 'base') AS position;
+
+Output → `5`
+
+7. REPLACE() – replace substring
+
+SELECT REPLACE('2025-09-22', '-', '/') AS formatted;
+
+Output → `2025/09/22`
+
+8. LPAD() / RPAD() – pad string
+
+SELECT LPAD('7', 3, '0') AS left_padded,
+       RPAD('7', 3, '0') AS right_padded;
+
+Output → `007 | 700`
+
+
+MySQL Functions – Date/Time Functions
+
+1. NOW() – current date & time
+
+SELECT NOW() AS current_datetime;
+
+Output → `2025-09-22 15:45:30`
+
+2. CURDATE() / CURTIME() – current date / time
+
+SELECT CURDATE() AS today, CURTIME() AS time_now;
+
+Output → `2025-09-22 | 15:45:30`
+
+3. DATE\_ADD() / DATE\_SUB() – add or subtract intervals
+
+SELECT DATE_ADD('2025-09-22', INTERVAL 10 DAY) AS plus_10_days,
+       DATE_SUB('2025-09-22', INTERVAL 2 MONTH) AS minus_2_months;
+
+Output → `2025-10-02 | 2025-07-22`
+
+4. DATEDIFF() – difference in days
+
+SELECT DATEDIFF('2025-12-31', '2025-09-22') AS days_left;
+
+Output → `100` (days remaining in year)
+
+5. TIMESTAMPDIFF() – difference in years, months, etc.
+
+SELECT TIMESTAMPDIFF(YEAR, '2000-01-01', CURDATE()) AS age_years;
+
+Output → `25` (if today is 2025-09-22)
+
+6. DAY(), MONTH(), YEAR()
+
+SELECT DAY('2025-09-22') AS day,
+       MONTH('2025-09-22') AS month,
+       YEAR('2025-09-22') AS year;
+
+Output → `22 | 9 | 2025`
+
+7. DAYNAME(), MONTHNAME()
+
+SELECT DAYNAME('2025-09-22') AS day_name,
+       MONTHNAME('2025-09-22') AS month_name;
+
+Output → `Monday | September`
+
+8. STR\_TO\_DATE() – convert string → date
+
+SELECT STR_TO_DATE('22-09-2025', '%d-%m-%Y') AS converted_date;
+
+Output → `2025-09-22`
+
+9. DATE\_FORMAT() – format date
+
+SELECT DATE_FORMAT('2025-09-22', '%d/%m/%Y') AS formatted_date,
+       DATE_FORMAT('2025-09-22', '%W %M %Y') AS full_format;
+
+Output → `22/09/2025 | Monday September 2025`
+
+* String functions → manipulating text (search, replace, case, trim, length, format).
+* Date functions → getting today’s date, adding/subtracting intervals, formatting, differences, extracting parts.
+* Practical use case:
+  * Format names (`CONCAT`, `UPPER`).
+  * Clean inputs (`TRIM`, `REPLACE`).
+  * Work with dates (`DATEDIFF`, `DATE_FORMAT`, `TIMESTAMPDIFF`).

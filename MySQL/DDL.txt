@@ -1,0 +1,93 @@
+DDL (Data Definition Language)
+
+DDL commands define and manage the structure of the database (tables, schemas, indexes, views). Unlike DML, DDL changes are usually auto-committed (saved permanently).
+
+1. CREATE (Create new database objects)
+
+Example 1: Create a Table
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Age INT,
+    Branch VARCHAR(30)
+);
+
+Creates a `Students` table with columns and constraints.
+
+Example 2: Create a Database
+
+CREATE DATABASE CollegeDB;
+
+Creates a new database named `CollegeDB`.
+
+2. ALTER (Modify an existing table structure)
+
+Example 1: Add a Column
+
+ALTER TABLE Students
+ADD Email VARCHAR(100);
+
+Adds a new column `Email` to `Students` table.
+
+Example 2: Modify Column Data Type
+
+ALTER TABLE Students
+MODIFY Age SMALLINT;
+
+Changes `Age` column type from `INT` to `SMALLINT`.
+
+3. DROP (Delete database objects permanently)
+
+Example 1: Drop a Table
+
+DROP TABLE Students;
+
+Deletes the `Students` table completely. Data + structure removed.
+
+Example 2: Drop a Database
+
+DROP DATABASE CollegeDB;
+
+Deletes the `CollegeDB` database and all its tables.
+
+4. TRUNCATE (Delete all rows from a table, but keep structure)
+
+Example 1: Truncate Table
+
+TRUNCATE TABLE Students;
+
+Removes all rows from `Students`, but table structure remains for reuse.
+
+Example 2: Difference from DELETE
+
+DELETE FROM Students;    -- Can be rolled back
+TRUNCATE TABLE Students; -- Cannot be rolled back (auto commit)
+
+`DELETE` removes rows one by one (slower, transactional).
+`TRUNCATE` is faster but irreversible.
+
+5. RENAME (Change table or column name)
+
+Example 1: Rename a Table
+
+RENAME TABLE Students TO Learners;
+
+Changes table name from `Students` to `Learners`.
+
+Example 2: Rename Column
+
+ALTER TABLE Learners
+RENAME COLUMN Branch TO Department;
+
+Renames column `Branch` to `Department`.
+
+Summary (DDL Commands)
+
+| Command      | Purpose                            | Example                             |
+| ------------ | ---------------------------------- | ----------------------------------- |
+| CREATE       | Create new database/table          | `CREATE TABLE Students (...)`       |
+| ALTER        | Modify table (add/modify column)   | `ALTER TABLE ADD Email`             |
+| DROP         | Delete table or database           | `DROP TABLE Students`               |
+| TRUNCATE     | Remove all rows but keep structure | `TRUNCATE TABLE Students`           |
+| RENAME       | Rename table/column                | `RENAME TABLE Students TO Learners` |

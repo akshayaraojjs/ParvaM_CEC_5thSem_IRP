@@ -1,0 +1,75 @@
+DML (Data Manipulation Language)
+
+DML commands are used to manipulate data within tables: inserting, updating, and deleting rows. These commands can be rolled back (transactional).
+
+1. INSERT (Add new rows to a table)
+
+Example 1: Insert single row
+
+INSERT INTO Students (StudentID, Name, Age, Branch)
+VALUES (1, 'Akshay', 24, 'Computer Science');
+
+Adds one student record.
+
+Example 2: Insert multiple rows
+
+INSERT INTO Students (StudentID, Name, Age, Branch)
+VALUES 
+(2, 'Priya', 22, 'Mechanical'),
+(3, 'Ramesh', 23, 'Civil');
+
+Adds multiple records in a single query.
+
+2. UPDATE (Modify existing rows)
+
+Example 1: Update a single row
+
+UPDATE Students
+SET Age = 25
+WHERE StudentID = 1;
+
+Updates age of student with `StudentID = 1`.
+
+Example 2: Update multiple rows
+
+UPDATE Students
+SET Branch = 'Electronics'
+WHERE Branch = 'Mechanical';
+
+Changes the branch for all students currently in Mechanical.
+
+3. DELETE (Remove rows from a table)
+
+Example 1: Delete a single row
+
+DELETE FROM Students
+WHERE StudentID = 3;
+
+Removes the student with `StudentID = 3`.
+
+Example 2: Delete multiple rows
+
+DELETE FROM Students
+WHERE Age < 23;
+
+Removes all students younger than 23.
+
+Additional Notes:
+* DML commands affect only data, not table structure.
+* Can be rolled back if used within a transaction.
+
+START TRANSACTION;
+
+DELETE FROM Students WHERE Age < 23;
+
+ROLLBACK;  -- Undo the deletion
+
+* Always use WHERE clause with UPDATE/DELETE to avoid affecting all rows unintentionally.
+
+Summary Table (DML)
+
+| Command    | Purpose              | Example                                        |
+| ---------- | -------------------- | ---------------------------------------------- |
+| INSERT     | Add new data         | `INSERT INTO Students (...) VALUES (...)`      |
+| UPDATE     | Modify existing data | `UPDATE Students SET Age=25 WHERE StudentID=1` |
+| DELETE     | Remove data          | `DELETE FROM Students WHERE Age<23`            |

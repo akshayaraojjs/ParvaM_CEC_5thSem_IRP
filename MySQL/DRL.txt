@@ -1,0 +1,184 @@
+DRL / DQL (Data Retrieval Language / SELECT Queries)
+
+Purpose: Retrieve data from one or more tables.
+
+1. SELECT Basics
+
+Example 1: Retrieve all columns
+
+SELECT * FROM Students;
+
+Fetches all columns for all rows.
+
+Example 2: Retrieve specific columns
+
+SELECT Name, Branch FROM Students;
+
+Fetches only `Name` and `Branch`.
+
+2. SELECT with WHERE (Filter data)
+
+Example 1: Filter using equality
+
+SELECT * FROM Students
+WHERE Branch = 'Computer Science';
+
+Fetches only students in Computer Science branch.
+
+Example 2: Filter using comparison
+
+SELECT * FROM Students
+WHERE Age > 22;
+
+Fetches students older than 22.
+
+3. SELECT with DISTINCT
+
+Example:
+
+SELECT DISTINCT Branch FROM Students;
+
+Fetches unique branches (removes duplicates).
+
+4. SELECT with ORDER BY
+
+Example 1: Ascending order
+
+SELECT Name, Age FROM Students
+ORDER BY Age ASC;
+
+Sorts students by age (youngest first).
+
+Example 2: Descending order
+
+SELECT Name, Age FROM Students
+ORDER BY Age DESC;
+
+Sorts students by age (oldest first).
+
+5. SELECT with LIMIT
+
+Example:
+
+SELECT * FROM Students
+ORDER BY Age ASC
+LIMIT 3;
+
+Fetches only the first 3 rows after sorting.
+
+
+GROUP BY
+
+Purpose: Group rows with same values in a column for aggregation.
+
+Example 1: Count students per branch
+
+SELECT Branch, COUNT(*) AS TotalStudents
+FROM Students
+GROUP BY Branch;
+
+Shows number of students in each branch.
+
+Example 2: Average age per branch
+
+SELECT Branch, AVG(Age) AS AvgAge
+FROM Students
+GROUP BY Branch;
+
+Shows average age of students in each branch.
+
+Use HAVING to filter groups
+
+SELECT Branch, COUNT(*) AS TotalStudents
+FROM Students
+GROUP BY Branch
+HAVING COUNT(*) > 2;
+
+Shows branches with more than 2 students.
+
+
+Joins in SQL
+
+Purpose: Combine data from multiple tables based on related columns.
+
+Assume we have:
+
+* `Students(StudentID, Name, BranchID)`
+* `Branches(BranchID, BranchName)`
+
+1. INNER JOIN – only matching rows
+
+SELECT s.Name, b.BranchName
+FROM Students s
+INNER JOIN Branches b
+ON s.BranchID = b.BranchID;
+
+Fetches students along with their branch names. Only students with valid branch IDs are included.
+
+2. LEFT JOIN – all rows from left table
+
+SELECT s.Name, b.BranchName
+FROM Students s
+LEFT JOIN Branches b
+ON s.BranchID = b.BranchID;
+
+Fetches all students. If branch info is missing, `BranchName` shows NULL.
+
+3. RIGHT JOIN – all rows from right table
+
+SELECT s.Name, b.BranchName
+FROM Students s
+RIGHT JOIN Branches b
+ON s.BranchID = b.BranchID;
+
+Fetches all branches. Students without branch appear as NULL.
+
+4. FULL OUTER JOIN – all rows from both tables
+
+*(MySQL does not support FULL OUTER JOIN natively; can simulate using UNION)*
+
+SELECT s.Name, b.BranchName
+FROM Students s
+LEFT JOIN Branches b ON s.BranchID = b.BranchID
+UNION
+SELECT s.Name, b.BranchName
+FROM Students s
+RIGHT JOIN Branches b ON s.BranchID = b.BranchID;
+
+Fetches all students and all branches, matching where possible.
+
+5. CROSS JOIN – Cartesian product
+
+SELECT s.Name, b.BranchName
+FROM Students s
+CROSS JOIN Branches b;
+
+Combines every student with every branch.
+
+6. SELF JOIN – join table with itself
+
+SELECT s1.Name AS Student1, s2.Name AS Student2
+FROM Students s1
+INNER JOIN Students s2
+ON s1.BranchID = s2.BranchID
+WHERE s1.StudentID < s2.StudentID;
+
+Finds pairs of students in the same branch.
+
+# Summary Table
+
+| Feature         | Purpose                | Example                        |
+| --------------- | ---------------------- | ------------------------------ |
+| SELECT          | Fetch data             | `SELECT * FROM Students`       |
+| WHERE           | Filter rows            | `WHERE Age>22`                 |
+| DISTINCT        | Unique values          | `SELECT DISTINCT Branch`       |
+| ORDER BY        | Sort rows              | `ORDER BY Age ASC`             |
+| LIMIT           | Restrict rows          | `LIMIT 3`                      |
+| GROUP BY        | Aggregate by column    | `GROUP BY Branch`              |
+| HAVING          | Filter groups          | `HAVING COUNT(*)>2`            |
+| INNER JOIN      | Only matching rows     | `INNER JOIN Branches`          |
+| LEFT JOIN       | All left table rows    | `LEFT JOIN Branches`           |
+| RIGHT JOIN      | All right table rows   | `RIGHT JOIN Branches`          |
+| FULL OUTER JOIN | All rows both tables   | Simulated with `UNION`         |
+| CROSS JOIN      | Cartesian product      | `CROSS JOIN Branches`          |
+| SELF JOIN       | Join table with itself | `Students s1 JOIN Students s2` |

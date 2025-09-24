@@ -1,0 +1,825 @@
+Characteristics of OOP (The Four Pillars):
+
+Object-Oriented Programming revolves around objects and has 4 main principles:
+    1. Encapsulation → wrapping data (fields) + behavior (methods) inside a class.
+    * Access control (public/private) prevents misuse.
+    2. Abstraction → hiding implementation details, exposing only what’s necessary (via abstract classes, interfaces).
+    3. Inheritance → one class acquires properties/methods of another (`extends`).
+    4. Polymorphism → one interface, many implementations.
+    * Compile-time → method overloading.
+    * Runtime → method overriding.
+--------------------------------------------------------------------------------------------------------------------
+OOP Concepts in (examples)
+
+Class
+
+A class in is a blueprint for creating objects. It contains fields (variables) and methods (functions).
+
+Example: Defining a `Car` class
+// Defining a class Car
+class Car {
+    // Fields (attributes)
+    String brand;
+    int year;
+
+    // Method (behavior)
+    void displayDetails() {
+        System.out.println("Car Brand: " + brand);
+        System.out.println("Car Year: " + year);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+Object Creation
+
+An object is an instance of a class created using the `new` keyword.
+
+Example: Creating objects of `Car`
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating first object
+        Car car1 = new Car();
+        car1.brand = "Toyota";
+        car1.year = 2020;
+        car1.displayDetails();
+
+        System.out.println();
+
+        // Creating second object
+        Car car2 = new Car();
+        car2.brand = "Honda";
+        car2.year = 2022;
+        car2.displayDetails();
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+Output:
+    Car Brand: Toyota
+    Car Year: 2020
+
+    Car Brand: Honda
+    Car Year: 2022
+--------------------------------------------------------------------------------------------------------------------
+Explanation:
+    * `Car` → class (blueprint).
+    * `car1`, `car2` → objects (instances).
+    * `car1.brand = "Toyota";` → setting attributes.
+    * `displayDetails()` → method called using object.
+--------------------------------------------------------------------------------------------------------------------
+Example: Encapsulation
+
+// File: BankAccount
+public class BankAccount {
+    private double balance;  // data hidden
+
+    // public methods for controlled access
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance!");
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+// File: Main
+public class Main {
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount();
+        acc.deposit(500);
+        acc.withdraw(200);
+        System.out.println("Final balance = " + acc.getBalance());
+    }
+}
+
+Output:
+    Final balance = 300.0
+--------------------------------------------------------------------------------------------------------------------
+Example: Inheritance + Polymorphism
+
+// Parent class
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class (inherits Animal)
+class Dog extends Animal {
+    // method overriding (runtime polymorphism)
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();  // upcasting
+        Animal a2 = new Cat();
+
+        a1.sound(); // Dog barks
+        a2.sound(); // Cat meows
+    }
+}
+
+Output:
+    Dog barks
+    Cat meows
+--------------------------------------------------------------------------------------------------------------------
+Constructors
+
+Definition: Special methods in a class that initialize objects.
+
+* Same name as class, no return type.
+* Called automatically when object is created.
+
+a) Default Constructor
+
+class Student {
+    String name;
+    int age;
+
+    // Default constructor
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+}
+
+public class DefaultConstructorDemo {
+    public static void main(String[] args) {
+        Student s = new Student();
+        System.out.println(s.name + " " + s.age);
+    }
+}
+
+Output:
+    Unknown 0
+--------------------------------------------------------------------------------------------------------------------
+b) Parameterized Constructor
+
+class Student {
+    String name;
+    int age;
+
+    // Parameterized constructor
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+}
+
+public class ParameterizedConstructorDemo {
+    public static void main(String[] args) {
+        Student s = new Student("Akshay", 21);
+        System.out.println(s.name + " " + s.age);
+    }
+}
+
+Output:
+    Akshay 21
+--------------------------------------------------------------------------------------------------------------------
+c) Constructor Overloading
+
+class Student {
+    String name;
+    int age;
+
+    // Default
+    Student() {
+        this("Unknown", 0);
+    }
+
+    // Parameterized
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+}
+
+public class ConstructorOverloadingDemo {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        Student s2 = new Student("Priya", 22);
+
+        System.out.println(s1.name + " " + s1.age);
+        System.out.println(s2.name + " " + s2.age);
+    }
+}
+
+Output:
+    Unknown 0
+    Priya 22
+--------------------------------------------------------------------------------------------------------------------
+d) Copy Constructor (via custom code)
+ doesn’t have a built-in copy constructor like C++, but you can simulate it.
+
+class Student {
+    String name;
+    int age;
+
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    // Copy constructor
+    Student(Student s) {
+        this.name = s.name;
+        this.age = s.age;
+    }
+}
+
+public class CopyConstructorDemo {
+    public static void main(String[] args) {
+        Student s1 = new Student("Ravi", 23);
+        Student s2 = new Student(s1); // copy object
+
+        System.out.println(s1.name + " " + s1.age);
+        System.out.println(s2.name + " " + s2.age);
+    }
+}
+
+Output:
+    Ravi 23
+    Ravi 23
+--------------------------------------------------------------------------------------------------------------------
+POJO (Plain Old Object)
+
+Definition: A simple class with only fields + getters/setters + maybe constructors.
+    * No `extends` special classes.
+    * No heavy framework code.
+    * Used in Spring Boot for entities, DTOs, request/response objects.
+
+Example: User POJO
+
+public class User {
+    private String username;
+    private String email;
+
+    // Constructor
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    // Getter
+    public String getUsername() {
+        return username;
+    }
+
+    // Setter
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    // Getter
+    public String getEmail() {
+        return email;
+    }
+
+    // Setter
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+Usage in main
+
+public class POJODemo {
+    public static void main(String[] args) {
+        User u = new User("akshay", "akshay@example.com");
+        System.out.println(u.getUsername() + " " + u.getEmail());
+
+        u.setEmail("newmail@example.com");
+        System.out.println("Updated: " + u.getEmail());
+    }
+}
+
+Output:
+    akshay akshay@example.com
+    Updated: newmail@example.com
+--------------------------------------------------------------------------------------------------------------------
+Access Specifiers in Java:
+    Access specifiers (or modifiers) define the scope/visibility of classes, methods, and variables.
+
+Types of Access Specifiers:
+
+| Specifier   | Scope                                                                                              |
+| ----------- | -------------------------------------------------------------------------------------------------- |
+| `public`    | Accessible from anywhere (same class, package, or outside package).                                |
+| `private`   | Accessible only within the same class.                                                             |
+| `protected` | Accessible within the same package and also by child classes (even in different packages).         |
+| *default*   | (no keyword) Accessible only within the same package.                                              |
+--------------------------------------------------------------------------------------------------------------------
+Example: Access Specifiers
+
+package accessdemo;
+
+class Person {
+    public String name = "John";       // accessible everywhere
+    private int age = 25;              // accessible only inside Person
+    protected String city = "Bangalore"; // same package + subclasses
+    String country = "India";          // default → same package only
+
+    // method to access private data
+    public void showAge() {
+        System.out.println("Age: " + age);
+    }
+}
+
+public class AccessTest {
+    public static void main(String[] args) {
+        Person p = new Person();
+        System.out.println("Name: " + p.name);   // ✅ public → accessible
+        System.out.println("City: " + p.city);   // ✅ protected → same package
+        System.out.println("Country: " + p.country); // ✅ default → same package
+        
+        // System.out.println(p.age); ❌ private → error
+        p.showAge(); // ✅ Accessing private via public method
+    }
+}
+
+Output:
+    Name: John
+    City: Bangalore
+    Country: India
+    Age: 25
+--------------------------------------------------------------------------------------------------------------------
+Packages in Java
+
+A package is a way of grouping related classes, interfaces, and sub-packages.
+It helps in modularization and avoids name conflicts.
+
+Types of Packages:
+    * Built-in packages: e.g., `java.util`, `java.io`, `java.sql`
+    * User-defined packages: created by developers
+--------------------------------------------------------------------------------------------------------------------
+Example: User-defined Package
+
+Step 1: Create a package file
+
+// File: mypackage/Calculator.java
+package mypackage;
+
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+
+Step 2: Use it in another program
+
+// File: Main.java
+import mypackage.Calculator;
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println("Sum: " + calc.add(10, 20));
+    }
+}
+
+Command to run:
+    javac mypackage/Calculator.java
+    javac Main.java
+    java Main
+
+Output:
+    Sum: 30
+--------------------------------------------------------------------------------------------------------------------
+Inheritance in Java
+
+Definition:
+    Inheritance allows one class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).
+
+This promotes code reusability and method overriding (runtime polymorphism).
+--------------------------------------------------------------------------------------------------------------------
+1. Types of Inheritance in Java
+    * Single Inheritance → one class inherits another
+    * Multilevel Inheritance → a class inherits another, and then another class inherits it
+    * Hierarchical Inheritance → multiple classes inherit the same parent
+    (*Java doesn’t support multiple inheritance with classes → handled using interfaces*)
+--------------------------------------------------------------------------------------------------------------------
+Example 1: Single Inheritance
+
+// Parent class
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Child class
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+// Main class
+public class SingleInheritanceDemo {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();   // inherited from Animal
+        d.bark();  // from Dog
+    }
+}
+
+Output:
+    This animal eats food.
+    The dog barks.
+--------------------------------------------------------------------------------------------------------------------
+#Example 2: Multilevel Inheritance
+
+// Parent class
+class Animal {
+    void eat() {
+        System.out.println("Animals eat food.");
+    }
+}
+
+// Child of Animal
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks.");
+    }
+}
+
+// Child of Dog
+class Puppy extends Dog {
+    void weep() {
+        System.out.println("Puppy is crying.");
+    }
+}
+
+public class MultilevelInheritanceDemo {
+    public static void main(String[] args) {
+        Puppy p = new Puppy();
+        p.eat();   // from Animal
+        p.bark();  // from Dog
+        p.weep();  // from Puppy
+    }
+}
+
+Output:
+    Animals eat food.
+    Dog barks.
+    Puppy is crying.
+--------------------------------------------------------------------------------------------------------------------
+#Example 3: Method Overriding (Runtime Polymorphism)
+
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks.");
+    }
+}
+
+public class MethodOverridingDemo {
+    public static void main(String[] args) {
+        Animal a = new Dog(); // parent reference → child object
+        a.sound(); // calls Dog's version (runtime decision)
+    }
+}
+
+Output:
+    Dog barks.
+--------------------------------------------------------------------------------------------------------------------
+#`super` Keyword (Access Parent Members)
+
+class Animal {
+    String type = "Animal";
+
+    void display() {
+        System.out.println("This is an animal.");
+    }
+}
+
+class Dog extends Animal {
+    String type = "Dog";
+
+    void display() {
+        super.display(); // call parent method
+        System.out.println("This is a dog.");
+        System.out.println("Parent type: " + super.type); // access parent variable
+    }
+}
+
+public class SuperKeywordDemo {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.display();
+    }
+}
+
+Output:
+    This is an animal.
+    This is a dog.
+    Parent type: Animal
+--------------------------------------------------------------------------------------------------------------------
+1. `this` Keyword in Java
+
+Definition:
+    `this` refers to the current object of a class.
+
+It is used to:
+    1. Differentiate between instance variables and local variables.
+    2. Call other constructors in the same class (constructor chaining).
+    3. Call current class methods.
+    4. Pass current object as a parameter.
+--------------------------------------------------------------------------------------------------------------------
+Example 1: Differentiate Local and Instance Variables
+
+class Student {
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        this.name = name;  // 'this' refers to current object's variable
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class ThisDemo1 {
+    public static void main(String[] args) {
+        Student s1 = new Student("Akshay", 22);
+        Student s2 = new Student("Ravi", 20);
+        s1.display();
+        s2.display();
+    }
+}
+
+Output:
+    Name: Akshay, Age: 22
+    Name: Ravi, Age: 20
+--------------------------------------------------------------------------------------------------------------------
+Example 2: Constructor Chaining
+
+class Student {
+    String name;
+    int age;
+
+    // Default constructor
+    Student() {
+        this("Unknown", 18);  // calls parameterized constructor
+    }
+
+    // Parameterized constructor
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class ThisDemo2 {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        Student s2 = new Student("Ravi", 21);
+        s1.display();
+        s2.display();
+    }
+}
+
+Output:
+    Name: Unknown, Age: 18
+    Name: Ravi, Age: 21
+--------------------------------------------------------------------------------------------------------------------
+2. `static` Keyword in Java
+
+Definition:
+    The `static` keyword is used for class-level members.
+
+It can be applied to:
+    1. Variables → shared across all objects.
+    2. Methods → can be called without creating objects.
+    3. Blocks → runs once when the class is loaded.
+    4. Nested classes → allows inner class without object of outer class.
+--------------------------------------------------------------------------------------------------------------------
+Example 1: Static Variable (Shared Across Objects)
+
+class Counter {
+    static int count = 0; // shared variable
+
+    Counter() {
+        count++;
+    }
+
+    void display() {
+        System.out.println("Object count: " + count);
+    }
+}
+
+public class StaticVariableDemo {
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        c1.display(); // prints 3 for all (same variable)
+        c2.display();
+        c3.display();
+    }
+}
+
+Output:
+    Object count: 3
+    Object count: 3
+    Object count: 3
+--------------------------------------------------------------------------------------------------------------------
+Example 2: Static Method
+
+class MathUtils {
+    static int square(int x) {
+        return x * x;
+    }
+}
+
+public class StaticMethodDemo {
+    public static void main(String[] args) {
+        // no need to create object
+        System.out.println("Square of 5: " + MathUtils.square(5));
+    }
+}
+
+Output:
+    Square of 5: 25
+--------------------------------------------------------------------------------------------------------------------
+Example 3: Static Block
+
+class Demo {
+    static {
+        System.out.println("Static block executed when class loads.");
+    }
+}
+
+public class StaticBlockDemo {
+    public static void main(String[] args) {
+        Demo d = new Demo(); // static block runs before this line
+    }
+}
+
+Output:
+    Static block executed when class loads.
+--------------------------------------------------------------------------------------------------------------------
+1. What is an Interface?
+    * An interface in Java is like a contract that specifies what a class must do, but not how it does it.
+    * It only contains abstract methods (until Java 7) and default + static methods (Java 8+).
+    * A class uses the `implements` keyword to provide functionality for an interface.
+
+Think of it as a blueprint for a class
+--------------------------------------------------------------------------------------------------------------------
+2. Importance of Interfaces
+
+    1. Abstraction → hides implementation details, shows only required behavior.
+    2. Multiple Inheritance → Java doesn’t allow multiple class inheritance, but a class can implement multiple interfaces.
+    3. Loose Coupling → helps design systems where code is independent of implementation.
+    4. Polymorphism → same interface can have multiple implementations.
+    5. Flexibility → allows you to change implementation without changing the code that uses the interface.
+--------------------------------------------------------------------------------------------------------------------
+3. Example 1: Simple Interface
+
+// Define interface
+interface Vehicle {
+    void start();
+    void stop();
+}
+
+// Implement interface
+class Car implements Vehicle {
+    public void start() {
+        System.out.println("Car started.");
+    }
+
+    public void stop() {
+        System.out.println("Car stopped.");
+    }
+}
+
+class Bike implements Vehicle {
+    public void start() {
+        System.out.println("Bike started.");
+    }
+
+    public void stop() {
+        System.out.println("Bike stopped.");
+    }
+}
+
+public class InterfaceDemo1 {
+    public static void main(String[] args) {
+        Vehicle v1 = new Car();
+        Vehicle v2 = new Bike();
+
+        v1.start(); // Car started
+        v1.stop();  // Car stopped
+        v2.start(); // Bike started
+        v2.stop();  // Bike stopped
+    }
+}
+
+Output:
+    Car started.
+    Car stopped.
+    Bike started.
+    Bike stopped.
+--------------------------------------------------------------------------------------------------------------------
+4. Example 2: Multiple Interfaces
+
+interface Camera {
+    void takePhoto();
+}
+
+interface MusicPlayer {
+    void playMusic();
+}
+
+// A class implementing multiple interfaces
+class Smartphone implements Camera, MusicPlayer {
+    public void takePhoto() {
+        System.out.println("Photo taken with smartphone.");
+    }
+
+    public void playMusic() {
+        System.out.println("Music playing on smartphone.");
+    }
+}
+
+public class InterfaceDemo2 {
+    public static void main(String[] args) {
+        Smartphone phone = new Smartphone();
+        phone.takePhoto();
+        phone.playMusic();
+    }
+}
+
+Output:
+    Photo taken with smartphone.
+    Music playing on smartphone.
+--------------------------------------------------------------------------------------------------------------------
+5. Example 3: Default & Static Methods (Java 8+)
+
+interface Calculator {
+    int add(int a, int b);
+
+    // Default method
+    default int subtract(int a, int b) {
+        return a - b;
+    }
+
+    // Static method
+    static int multiply(int a, int b) {
+        return a * b;
+    }
+}
+
+class SimpleCalculator implements Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+
+public class InterfaceDemo3 {
+    public static void main(String[] args) {
+        SimpleCalculator calc = new SimpleCalculator();
+        System.out.println("Addition: " + calc.add(10, 5));
+        System.out.println("Subtraction: " + calc.subtract(10, 5));
+        System.out.println("Multiplication: " + Calculator.multiply(10, 5));
+    }
+}
+
+Output:
+    Addition: 15
+    Subtraction: 5
+    Multiplication: 50
+--------------------------------------------------------------------------------------------------------------------
