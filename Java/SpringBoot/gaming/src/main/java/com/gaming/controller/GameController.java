@@ -15,6 +15,8 @@ public class GameController {
         this.gameService = gameService;
     }
 
+    // Calling the service to insert a new data along with Post Request 
+    // Post Method is used to insert the data
     @PostMapping
     public Game createGame(@RequestBody Game game) {
         return gameService.createGame(game);

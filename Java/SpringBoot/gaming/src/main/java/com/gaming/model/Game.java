@@ -1,20 +1,31 @@
+// Where is the file? (Path of the current file)
 package com.gaming.model;
 
+// header file to make use of Annotations
+// @ - Annotations
 import jakarta.persistence.*;
 
+// Entity refers to Table
 @Entity
 @Table(name = "games")
+// Table names will be plural
+// Class/Method names will be Singular
 public class Game {
+    // Primary Key - id
     @Id
+    // Generate the Primary Key value automatically and also auto_increment
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // Type of data for id - Long (Large Integer Value)
     private Long id;
 
+    // Type of data for name  - String (varchar) 
     private String name;
     private String description;
     private String category;
+    // Type of data for costPerMinute - double (Large Float Value)
     private double costPerMinute;
 
-    // Getters & Setters
+    // Getters & Setters to store or access the private data
     public Long getId() {
         return id;
     }
