@@ -1,3 +1,5 @@
+// DTO - Data Transfer Object
+// It helps in Request & Response
 package com.gaming_app.dto.request;
 
 import jakarta.validation.constraints.DecimalMin;
@@ -5,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class GameRequest {
+    // Validation Message will be shown if the data is corrupted
     @NotBlank(message = "Game Name is required")
     private String name;
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+// API Endpoint
 @RequestMapping("/games")
 public class GameController {
     private final GameService gameService;
