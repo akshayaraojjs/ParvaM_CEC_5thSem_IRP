@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- To show the title of the HTML document in the browser tab, we use title tag -->
+    <title>City Engineering College</title>
+    <style>
+        .menu {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border: 1px solid black;
+            background-color: lightgreen;
+        }
+
+        a {
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            color: brown;
+        }
+
+        .main_heading {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .sub-heading {
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .achievments {
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+            border: 5px solid black;
+        }
+
+        .achievments h3 {
+            font-size: 25px;
+            color: green;
+        }
+
+        .achievments p {
+            font-size: 18px;
+        }
+
+        .center-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dept {
+            border: 10px groove green;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .dept th {
+            border: 1px solid black;
+            font-size: 20px;
+            padding: 10px;
+            color: darkgreen;
+        }
+
+        .dept td {
+            border: 1px solid gray;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .images .image {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .images figcaption {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .enquiry_form {
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        .enquiry_form label {
+            font-size: 20px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+
+        .enquiry_form input,
+        .enquiry_form textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .contact-block {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        footer {
+            border: 1px solid black;
+            padding: 50px 10px;
+            background-color: darkslategray;
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        footer ul li {
+            padding: 5px 0;
+        }
+
+        footer ul h3 {
+            font-size: 20px;
+        }
+
+        footer ul li a {
+            font-size: 16px;
+            color: white;
+        }
+        section{
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="main_heading">City Engineering College</h1>
+        <ul class="menu" type="none">
+            <li class="logo">
+                <a href="https://cityengineeringcollege.ac.in/">
+                    <img src="media/images/cec-removebg-preview.png" alt="cec" height="150px">
+                </a>
+            </li>
+            <li>
+                <!-- To add some links, we will use anchor tag -->
+                <!-- a - anchor tag with href attribute, where link is given in the href attribute -->
+                <!-- <a href="https://www.google.com">Google</a> -->
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#about_us">About Us</a>
+            </li>
+            <li>
+                <a href="#depts">Departments</a>
+            </li>
+            <li>
+                <a href="#facilities">Facilities</a>
+            </li>
+            <li>
+                <a href="#contact_us">Contact Us</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <section id="home">
+            <h2 class="sub-heading">Welcome to City Engineering College</h2>
+            <h3>Where Innovation Meets Opportunity</h3>
+            <p>
+                Join a campus that inspires creativity and critical thinking. Step into an environment where your
+                ambitions are fueled by technology and mentorship.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium officia debitis consequatur ullam
+                voluptatem suscipit veniam nesciunt commodi, molestias ipsa? Facere earum labore placeat atque ipsa
+                quis, voluptate ab sint necessitatibus nemo vel numquam architecto corrupti laboriosam dolores ipsam,
+                repellendus maxime sunt adipisci! Eius facilis at perspiciatis exercitationem quia quisquam modi?
+                Impedit iste, perspiciatis deleniti tempora maiores natus numquam blanditiis quidem magnam adipisci,
+                corporis aperiam quo eos aspernatur cumque labore quae, nobis ab voluptate dicta! Repudiandae, quo! At
+                perferendis quae quibusdam unde obcaecati adipisci omnis eum mollitia illo architecto molestiae dolorem
+                provident odio tempora ducimus atque sequi, ex officiis deserunt.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis modi dolor voluptates sint dolorum rem
+                facilis. Rem soluta perferendis eum aspernatur esse sunt rerum beatae voluptatibus, minima, repudiandae
+                corrupti! Id aliquam optio possimus veritatis maxime praesentium saepe impedit officia cumque obcaecati,
+                nostrum ipsam, esse, tempora magnam expedita nesciunt sapiente quod ratione corrupti. Magnam, aut enim
+                quas sapiente culpa unde, deserunt error fugit dolorum at pariatur reprehenderit dolorem velit! Porro
+                praesentium architecto debitis enim autem, fugiat minima eaque, nihil ea officiis corrupti cum
+                laboriosam atque soluta sequi illo culpa nisi? Alias assumenda veritatis minus tenetur id quae
+                reprehenderit odit voluptas odio!</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate libero dolor atque ipsum, doloremque
+                similique deserunt illo rem, veritatis corrupti numquam distinctio quidem deleniti modi earum ullam ipsa
+                quasi consequatur optio quis ducimus cum nemo. Voluptates vel ad voluptate fugiat, dolores dolorum eum
+                laboriosam provident quae quas, itaque nihil non quaerat, odio sapiente voluptatem illo unde et fuga?
+                Delectus laboriosam molestias quisquam repellendus, inventore repudiandae consequatur quos quod,
+                obcaecati quaerat at quibusdam officia amet ea. Quae est omnis blanditiis accusantium, ut eos rem animi
+                sequi similique reiciendis veritatis eaque! Inventore totam autem consectetur nam sit tempore
+                voluptatibus est laboriosam aliquid?</p>
+        </section>
+        <section id="about_us">
+            <h2 class="sub-heading">About Us</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum officia delectus laborum, culpa
+                odit nemo, ducimus possimus nam perferendis ipsum dignissimos nisi est explicabo totam molestiae
+                consequatur nobis id velit iste alias, quidem facilis esse! Molestias dicta dolor sapiente deleniti rem.
+                Aliquid quidem, libero officiis nostrum accusantium impedit saepe! Sint laudantium officiis natus,
+                dolorum voluptatum similique a commodi doloremque voluptatibus, distinctio aliquam beatae qui ipsam
+                quibusdam laboriosam itaque alias voluptate, numquam quasi voluptatem eveniet incidunt. At, voluptates
+                cum fugit corporis veritatis illum minus vero excepturi iure sint dolore repellendus ex ab quaerat?
+                Ipsum est, eaque neque officiis totam dicta aperiam error qui sequi? Aliquid, reprehenderit? Corrupti
+                quasi ipsum amet nulla explicabo corporis vel omnis officiis repellat esse exercitationem eveniet
+                inventore doloribus, soluta sit. Perspiciatis corporis consectetur sequi quas, quos suscipit culpa nobis
+                facere eaque corrupti ex, amet, ipsam eius quam perferendis nemo reprehenderit distinctio iste nam
+                veniam esse porro reiciendis? Accusantium quam laudantium rerum veniam a, nisi harum nihil, id odio quia
+                aspernatur beatae vel ratione fuga voluptatum molestias. Consectetur ipsa labore, possimus ipsam quidem
+                odit fuga at unde explicabo ipsum, impedit a ratione non soluta, itaque minus nobis beatae inventore
+                voluptas pariatur aut? Dolorem iure voluptatibus alias nulla?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quae porro molestias, omnis
+                eligendi minus eos quidem veritatis veniam debitis ratione ullam! Deserunt id, officiis vero,
+                dignissimos autem tenetur perspiciatis ducimus impedit earum architecto a laborum voluptatum voluptates,
+                ab aliquam? Numquam pariatur impedit laborum unde, odio adipisci beatae, quisquam fuga sunt minima
+                repellendus enim dolorem? Tempore voluptatum autem quasi distinctio, odio reiciendis ab molestias sint
+                eius, a ipsa iusto nulla incidunt? Dolor enim voluptatem eveniet reprehenderit ab voluptatum ratione ea
+                hic, illum veritatis sed explicabo deserunt quas voluptates accusamus ipsum voluptatibus quisquam, sequi
+                asperiores, excepturi consequatur quod! Molestiae, dicta voluptates?</p>
+            <ul class="achievments" type="none">
+                <li>
+                    <h3>5+</h3>
+                    <p>Branches</p>
+                </li>
+                <li>
+                    <h3>50+</h3>
+                    <p>Partner Companies</p>
+                </li>
+                <li>
+                    <h3>10+</h3>
+                    <p>Years Experience</p>
+                </li>
+                <li>
+                    <h3>100+</h3>
+                    <p>Alumnis accross India</p>
+                </li>
+            </ul>
+            <div class="center-block">
+                <iframe width="800" height="400" src="https://www.youtube.com/embed/kK8tbWXs9Qo?si=TDWRRSuTK8PmBB1B"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section id="depts">
+            <h2 class="sub-heading">Departments</h2>
+            <div class="center-block"></div>
+            <table class="dept">
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Department Name</th>
+                    <th>Dept. Code</th>
+                    <th>HOD</th>
+                    <th>No. of Faculties</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Computer Science & Engineering</td>
+                    <td>CEC-CSE</td>
+                    <td>Dr.Manjunath</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Information Science & Engineering</td>
+                    <td>CEC-ISE</td>
+                    <td>Dr.Somnath</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Artificial Intelligence & Machine Learning</td>
+                    <td>CEC-AIML</td>
+                    <td>Dr.Vishwanath</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Electronics & Communication</td>
+                    <td>CEC-ECE</td>
+                    <td>Dr.Pashupathinath</td>
+                    <td>16</td>
+                </tr>
+            </table>
+        </section>
+        <section id="facilities">
+            <h2 class="sub-heading">Facilities</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, quis. Repellendus rem iusto
+                consequuntur nobis quas, modi culpa! Similique tempore quas quod reprehenderit dolor maxime
+                consequuntur, in officia sapiente facilis? Consequuntur maxime magni, veniam, quos non earum nam fugiat
+                cupiditate magnam praesentium et veritatis qui? Iure autem eius nesciunt iusto totam officia debitis
+                quos nostrum repellat. Quis dolorum quam placeat suscipit velit nisi quasi in? Accusantium unde natus
+                eaque deserunt ea. Minus consequatur sequi corporis excepturi quis nemo aut tenetur magni, beatae
+                dignissimos, doloremque consectetur. In magnam, minus nemo minima labore, ipsam ea dolor at repudiandae
+                explicabo recusandae odio quidem!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, magnam molestiae? Totam facere minus
+                recusandae sapiente porro, delectus, explicabo eveniet officiis magnam cum quidem dicta minima
+                dignissimos! Provident distinctio error quod, ullam velit est rerum maiores blanditiis ea, assumenda
+                aspernatur magnam, alias tenetur voluptatum cumque ab vitae quas corporis reiciendis sapiente! Tempora,
+                doloribus iure facilis aspernatur id quasi qui omnis, ducimus quas inventore dolorem, est tempore
+                explicabo! Labore, nulla illum? Tenetur accusantium dolor, magni ipsam laudantium vitae earum. Officiis
+                corrupti odio sit molestias obcaecati voluptas asperiores. Reprehenderit animi itaque in deserunt
+                debitis autem. Beatae saepe in quam eum! Ex, minima?</p>
+            <div class="images">
+                <div class="image">
+                    <img src="https://cdn.pixabay.com/photo/2024/08/25/12/13/ai-generated-8996380_1280.png" alt=""
+                        width="300px">
+                    <figcaption>College Bus</figcaption>
+                </div>
+                <div class="image">
+                    <img src="https://cdn.pixabay.com/photo/2020/10/07/18/19/teacher-5635919_1280.png" alt=""
+                        width="300px">
+                    <figcaption>Digital Class</figcaption>
+                </div>
+                <div class="image">
+                    <img src="https://cdn.pixabay.com/photo/2019/06/17/07/33/school-4279290_1280.jpg" alt=""
+                        width="300px">
+                    <figcaption>Soft Skills Training</figcaption>
+                </div>
+            </div>
+        </section>
+        <section id="contact_us">
+            <h2 class="sub-heading">Contact Us</h2>
+            <div class="contact-block">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.2784351282694!2d77.54834637419845!3d12.889809287418096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3eecdc883cc1%3A0x1d44e022ac75925a!2sCity%20Engineering%20College!5e0!3m2!1sen!2sin!4v1759727716106!5m2!1sen!2sin"
+                    width="800" height="750" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <form class="enquiry_form">
+                    <h2>Enquiry Form</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name"><br><br>
+                    <label for="name">Email Id:</label>
+                    <input type="email" name="email_id" id="email_id"><br><br>
+                    <label for="name">Phone Number:</label>
+                    <input type="tel" name="phone" id="phone"><br><br>
+                    <label for="name">Enquiry:</label>
+                    <textarea name="enquiry" id="enquiry" rows="10" cols="100"></textarea><br><br>
+                    <input type="submit" value="Submit Enquiry">
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="info" style="width: 25%;">
+            <img src="media/images/cec.webp" alt="cec" height="200px">
+            <p>Approved by AICTE, New Delhi and<br>
+                Affilated to Visvesvaraya Technological
+                University, Belagavi.</p>
+        </div>
+        <ul class="footer-menu" type="none">
+            <h3>Quick Links</h3>
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#about_us">About Us</a>
+            </li>
+            <li>
+                <a href="#depts">Departments</a>
+            </li>
+            <li>
+                <a href="#facilities">Facilities</a>
+            </li>
+            <li>
+                <a href="#contact_us">Contact Us</a>
+            </li>
+        </ul>
+        <ul class="footer-menu" type="none">
+            <h3>Departments</h3>
+            <li>
+                Computer Science & Engineering
+            </li>
+            <li>
+                Information Science & Engineering
+            </li>
+            <li>
+                Artificial Intelligence & Machine Learning
+            </li>
+            <li>
+                Electronics & Communication
+            </li>
+        </ul>
+        <ul class="footer-menu" type="none">
+            <h3>Contact Us</h3>
+            <li>
+                Phone: <b>+91-9876543210</b>
+            </li>
+            <li>
+                Telephone: <b>080-98765432</b>
+            </li>
+            <li>
+                Address: <b>Doddakallasandra, Off Kanakapura Road,<br>
+                    Next to Gokulam Apartment,
+                    Bangalore-560 062</b>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
