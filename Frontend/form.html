@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Members Registration Form</h1>
+    <form method="post" action="">
+        <!-- label tag is used to show the name of the input what is expected -->
+        <label for="username">Name:</label>
+        <!-- text input type is used to accept text based input like names, registration number(Alphanumeric) -->
+        <input type="text" name="username" id="username" required placeholder="Enter your name" value="Akshay"><br><br>
+        <label for="usn">USN:</label>
+        <input type="text" name="usn" id="usn" value="1ce23ai001" readonly><br><br>
+        <label for="age">Age:</label>
+        <!-- number input type is used to accept number based input like age, amount, weight, height -->
+        <input type="number" name="age" id="age" min="0" max="100"><br><br>
+        <label for="email_id">Email ID:</label>
+        <!-- email input type is used to verify the email id format -->
+        <input type="email" name="email_id" id="email_id"><br><br>
+        <label for="password">Password:</label>
+        <!-- password input type is used to hide the password which is sensitive information -->
+        <input type="password" name="password" id="password"><br><br>
+        <label for="phone">Phone Number:</label>
+        <!-- tel input type is used to accept the phone number -->
+        <input type="tel" name="phone" id="phone"><br><br>
+        <label for="gender">Gender:</label>
+        <!-- radio input type is used to accept one input out of multiple options (MCQ) -->
+        <input type="radio" name="gender" id="male" value="Male">
+        <label for="gender">Male</label>
+        <input type="radio" name="gender" id="female" value="Female">
+        <label for="gender">Female</label><br><br>
+        <label for="address">Address:</label>
+        <!-- textarea input type is used to accept large information like address, comments, suggestions -->
+        <textarea name="address" id="address" cols="50" rows="10"></textarea><br><br>
+        <label for="hobbies">Hobbies:</label>
+        <!-- checkbox input type is used to select one or more options out of multiple options -->
+        <input type="checkbox" name="hobby1" id="gaming" value="Gaming">
+        <label for="hobby1">Gaming</label>
+        <input type="checkbox" name="hobby2" id="singing" value="Singing">
+        <label for="hobby2">Singing</label>
+        <input type="checkbox" name="hobby3" id="dancing" value="Dancing">
+        <label for="hobby3">Dancing</label><br><br>
+        <label for="dob">Date of Birth:</label>
+        <!-- date input type is used to select the date from the datepicker -->
+        <input type="date" name="dob" id="dob" min="2001-01-01" max="2025-09-29"><br><br>
+        <label for="dob">Branch:</label>
+        <!-- select dropdown input is used for showing more options like state, country -->
+        <select name="branch">
+            <option>Select your branch</option>
+            <option value="CSE" selected>Computer Science</option>
+            <option value="ISE">Information Science</option>
+            <option value="AIML">Artificial Intelligence & Machine Learning</option>
+            <option value="ECE">Electronics & Communication</option>
+        </select><br><br>
+        <label for="upload">Upload Picture</label>
+        <!-- file input is used for accepting the pictures, pdf files as a input -->
+        <input type="file" name="upload" id="upload" multiple><br><br>
+        <!-- reset button is used for clearing all the user input -->
+        <input type="reset" value="Reset">
+        <!-- submit button is used for submitting the user input for further processing -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

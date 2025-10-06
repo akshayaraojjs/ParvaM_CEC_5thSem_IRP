@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th{
+            border: 2px dotted black;
+        }
+        td{
+            border: 2px solid brown;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tag - h1, table, p, tr -->
+    <!-- Element - <h1>Heading 1 with a Content</h1> -->
+    <!-- Attributes -  -->
+    <!-- table is the root element for creating the table -->
+    <table>
+        <!-- tr is a Table Row -->
+        <!-- Shortcut to understand Rowspan & Colspan -->
+        <!-- Rowspan is used to merge multiple rows -->
+            <!-- To implement rowspan, we give some number: rowspan="2" -->
+            <!-- Remove duplicate data from next row (tr) -->
+        <!-- Colspan is used to merge multiple columns -->
+            <!-- To implement colspan, we give some number: colspan="2" -->
+            <!-- Remove duplicate data from same row (tr) -->
+        <tr>
+            <!-- th is a Table Heading -->
+            <th>Player</th>
+            <th colspan="2">Country & IPL</th>
+            <!-- <th>IPL</th> -->
+        </tr>
+        <tr>
+            <!-- For merging multiple rows, we use rowspan - Attribute -->
+            <!-- td is a Table Data -->
+            <td>Sachin Tendulkar</td>
+            <td rowspan="6">India</td>
+            <td>Mumbai Indians</td>
+        </tr>
+        <tr>
+            <td>Mahendra Singh Dhoni</td>
+            <!-- Ctrl + ? or Ctrl + / for comment -->
+            <!-- <td>India</td> -->
+            <td>Chennai Super Kings</td>
+        </tr>
+        <tr>
+            <td>Rohit Sharma</td>
+            <!-- <td>India</td> -->
+            <td>Mumbai Indians</td>
+        </tr>
+        <tr>
+            <td>Shreyas Iyer</td>
+            <!-- <td>India</td> -->
+            <td>Punjab Kings</td>
+        </tr>
+        <tr>
+            <td>Devdutt Padikkal</td>
+            <!-- <td>India</td> -->
+            <td>Royal Challengers Bengaluru</td>
+        </tr>
+        <tr>
+            <td>Virat Kohli</td>
+            <!-- <td>India</td> -->
+            <td>Royal Challengers Bengaluru</td>
+        </tr>
+        <tr>
+            <td>Travis Head</td>
+            <td>Australia</td>
+            <td>Sunrisers Hyderabad</td>
+        </tr>
+    </table>
+</body>
+</html>
