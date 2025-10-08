@@ -121,3 +121,5 @@ Inserting the data into branch table:
 To remove all the existing data from the table:
 Syntax:
     truncate table table_name
+
+npm create vite@latest gaming-app-frontend --template react

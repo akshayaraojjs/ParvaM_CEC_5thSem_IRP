@@ -1,0 +1,2 @@
+main.jsx:
+To target the root element
